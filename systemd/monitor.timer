@@ -1,0 +1,12 @@
+[Unit]
+Description=Таймер для периодического запуска сервиса мониторинга
+
+[Timer]
+# Запускать каждую минуту
+OnCalendar=*:0/1
+# Запустить через 10 секунд после загрузки системы
+OnBootSec=10s
+Persistent=true
+
+[Install]
+WantedBy=timers.target
