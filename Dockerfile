@@ -2,10 +2,11 @@
 FROM ubuntu:22.04
 
 # Устанавливаем нужные утилиты
-RUN apt-get update && apt-get install -y procps curl systemd && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y procps curl systemd dos2unix && rm -rf /var/lib/apt/lists/*
 
 # Копируем наш скрипт и делаем его исполняемым
 COPY src/monitor.sh /usr/local/bin/monitor.sh
+RUN dos2unix /usr/local/bin/monitor.sh
 RUN chmod +x /usr/local/bin/monitor.sh
 
 # Копируем systemd-юниты
